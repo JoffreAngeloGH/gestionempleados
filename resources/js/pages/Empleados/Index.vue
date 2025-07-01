@@ -40,6 +40,7 @@
       <a href="/reporte-json" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" target="_blank">
         Generar JSON
       </a>
+      <a href="/reporte-excel" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generar Excel</a>
     </div>
     
   </div>

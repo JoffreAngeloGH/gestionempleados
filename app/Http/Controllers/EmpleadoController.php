@@ -8,6 +8,7 @@ use App\Models\Empleado;
 // IMPORTA servicios SOLID
 use App\Services\Notificaciones\EmailNotificadorService;
 use App\Services\Notificaciones\SMSNotificadorService;
+use App\Services\Reportes\ExcelReporteService;
 use App\Services\Reportes\JSONReporteService;
 use App\Services\Reportes\PDFReporteService;
 use App\Services\Salarios\SalarioFactory;
@@ -71,6 +72,23 @@ class EmpleadoController extends Controller
         // GENERA el PDF
         return $pdfService->generar($empleados);
     }
+
+    public function reporteExcel()
+    {
+        $empleados = Empleado::all()->map(function ($empleado) {
+            $calculadora = SalarioFactory::obtenerCalculadora($empleado);
+            return [
+                'nombre' => $empleado->nombre,
+                'tipo' => $empleado->tipo,
+                'salario_base' => $empleado->salario_base,
+                'salario_final' => $calculadora->calcular($empleado->salario_base),
+            ];
+        })->toArray();
+
+        $excelService = new ExcelReporteService();
+        return $excelService->generar($empleados);
+    }
+
 
     // NOTIFICA POR EMAIL A EMPLEADO ESPECÍFICO
     public function notificarEmail($id)

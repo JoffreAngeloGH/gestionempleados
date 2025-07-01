@@ -29,3 +29,6 @@ Route::get('/notificar-email/{id}', [EmpleadoController::class, 'notificarEmail'
 
 // ENVÍA sms a empleado por id
 Route::get('/notificar-sms/{id}', [EmpleadoController::class, 'notificarSMS']);
+
+//
+Route::get('/reporte-excel', [EmpleadoController::class, 'reporteExcel']);
