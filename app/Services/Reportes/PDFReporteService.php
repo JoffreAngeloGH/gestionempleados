@@ -2,15 +2,17 @@
 
 namespace App\Services\Reportes;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Empleado;
+
+// Clase que genera el reporte en PDF
 class PDFReporteService implements ReporteInterface
 {
     public function generar(array $empleados)
     {
-        // Simulación simple
-        foreach ($empleados as $e) {
-            echo "Empleado: {$e->nombre}, Final: {$e->salario_final}\n";
-        }
-
-        return 'Simulación de reporte PDF completada.';
+        // CARGA una vista blade con los datos para generar PDF
+        $pdf = Pdf::loadView('reportes.empleados', ['empleados' => $empleados]);
+        // DESCARGA el archivo PDF
+        return $pdf->download('reporte_empleados.pdf');
     }
 }

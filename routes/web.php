@@ -15,7 +15,17 @@ Route::get('dashboard', function () {
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
-
+// MUESTRA empleados + salarios calculados
 Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados.index');
 
-Route::get('/empleados/reporte', [EmpleadoController::class, 'generarReporte']);
+// GENERA reporte JSON
+Route::get('/reporte-json', [EmpleadoController::class, 'generarReporte']);
+
+// GENERA reporte PDF
+Route::get('/reporte-pdf', [EmpleadoController::class, 'reportePdf']);
+
+// ENVÍA email a empleado por id
+Route::get('/notificar-email/{id}', [EmpleadoController::class, 'notificarEmail']);
+
+// ENVÍA sms a empleado por id
+Route::get('/notificar-sms/{id}', [EmpleadoController::class, 'notificarSMS']);
