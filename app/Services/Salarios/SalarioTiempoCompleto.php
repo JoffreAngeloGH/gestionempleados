@@ -2,10 +2,10 @@
 
 namespace App\Services\Salarios;
 
-use App\Services\Contratos\CalculadoraSalarioInterface;
+use App\Services\Contratos\CalculadoraSalario;
 
 // Clase para calcular salario tiempo completo
-class SalarioTiempoCompleto implements CalculadoraSalarioInterface
+class SalarioTiempoCompleto implements CalculadoraSalario
 {
     public function calcular(float $salarioBase): float
     {

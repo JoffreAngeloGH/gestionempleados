@@ -2,10 +2,10 @@
 
 namespace App\Services\Salarios;
 
-use App\Services\Contratos\CalculadoraSalarioInterface;
+use App\Services\Contratos\CalculadoraSalario;
 
 // Clase para calcular salario medio tiempo
-class SalarioMedioTiempo implements CalculadoraSalarioInterface
+class SalarioMedioTiempo implements CalculadoraSalario
 {
     public function calcular(float $salarioBase): float
     {

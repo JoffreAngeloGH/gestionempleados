@@ -2,10 +2,10 @@
 
 namespace App\Services\Salarios;
 
-use App\Services\Contratos\CalculadoraSalarioInterface;
+use App\Services\Contratos\CalculadoraSalario;
 
 // Clase para calcular el salario de un freelancer
-class SalarioFreelancer implements CalculadoraSalarioInterface
+class SalarioFreelancer implements CalculadoraSalario
 {
     public function calcular(float $salarioBase): float
     {
