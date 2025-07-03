@@ -4,7 +4,7 @@ namespace App\Services\Notificaciones;
 
 
 // CLASE concreta que implementa la interfaz de notificación
-class EmailNotificadorService implements NotificadorInterface
+class EmailNotificador implements NotificadorInterface
 {
     public function enviar(string $nombre): string
     {

@@ -6,9 +6,9 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 
 // IMPORTA servicios SOLID
-use App\Services\Notificaciones\EmailNotificadorService;
-use App\Services\Notificaciones\SMSNotificadorService;
-use App\Services\Notificaciones\WhatsAppNotificadorService;
+use App\Services\Notificaciones\EmailNotificador;
+use App\Services\Notificaciones\SMSNotificador;
+use App\Services\Notificaciones\WhatsAppNotificador;
 use App\Services\Reportes\ExcelReporteService;
 use App\Services\Reportes\JSONReporteService;
 use App\Services\Reportes\PDFReporteService;
@@ -96,7 +96,7 @@ class EmpleadoController extends Controller
     public function notificarEmail($id)
     {
         $empleado = Empleado::findOrFail($id);
-        $notificador = new EmailNotificadorService();
+        $notificador = new EmailNotificador();
         $mensaje = $notificador->enviar($empleado->nombre);
 
         echo $mensaje; // muestra el mensaje en pantalla
@@ -106,7 +106,7 @@ class EmpleadoController extends Controller
     public function notificarSMS($id)
     {
         $empleado = Empleado::findOrFail($id);
-        $notificador = new SMSNotificadorService(); //WhatsAppNotificadorService();
+        $notificador = new SMSNotificador(); //WhatsAppNotificador();
         $mensaje = $notificador->enviar($empleado->nombre);
 
         echo $mensaje;

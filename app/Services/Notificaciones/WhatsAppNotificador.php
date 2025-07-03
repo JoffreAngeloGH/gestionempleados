@@ -2,7 +2,7 @@
 
 namespace App\Services\Notificaciones;
 
-class WhatsAppNotificadorService implements NotificadorInterface
+class WhatsAppNotificador implements NotificadorInterface
 {
     public function enviar(string $nombre): string
     {

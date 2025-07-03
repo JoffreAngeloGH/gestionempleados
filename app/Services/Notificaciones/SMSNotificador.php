@@ -3,7 +3,7 @@
 namespace App\Services\Notificaciones;
 
 // CLASE concreta que implementa la interfaz de notificación
-class SMSNotificadorService implements NotificadorInterface
+class SMSNotificador implements NotificadorInterface
 {
     public function enviar(string $nombre): string
     {
