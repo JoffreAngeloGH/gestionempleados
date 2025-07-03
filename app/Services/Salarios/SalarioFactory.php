@@ -17,6 +17,7 @@ class SalarioFactory
             'tiempo_completo' => new SalarioTiempoCompleto(),
             'medio_tiempo'    => new SalarioMedioTiempo(),
             'contratista'     => new SalarioContratista(),
+            'freelancer'      => new SalarioFreelancer(), // agregar el nuevo campo para freelancer
             default           => throw new \Exception("Tipo no soportado")
         };
     }

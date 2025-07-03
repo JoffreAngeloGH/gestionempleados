@@ -41,6 +41,7 @@
         Generar JSON
       </a>
       <a href="/reporte-excel" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generar Excel</a>
+       <a href="/reporte-xml" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Generar XML</a>
     </div>
     
   </div>

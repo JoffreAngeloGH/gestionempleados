@@ -8,9 +8,11 @@ use App\Models\Empleado;
 // IMPORTA servicios SOLID
 use App\Services\Notificaciones\EmailNotificadorService;
 use App\Services\Notificaciones\SMSNotificadorService;
+use App\Services\Notificaciones\WhatsAppNotificadorService;
 use App\Services\Reportes\ExcelReporteService;
 use App\Services\Reportes\JSONReporteService;
 use App\Services\Reportes\PDFReporteService;
+use App\Services\Reportes\XMLReporteService;
 use App\Services\Salarios\SalarioFactory;
 
 use Illuminate\Http\Request;
@@ -36,7 +38,7 @@ class EmpleadoController extends Controller
         ]);
     }
 
-    // GENERA REPORTE EN JSON (podría ser PDF cambiando el servicio)
+    // GENERA REPORTE EN JSON 
     public function generarReporte()
     {
         // OBTIENE empleados + calcula salario final
@@ -104,9 +106,26 @@ class EmpleadoController extends Controller
     public function notificarSMS($id)
     {
         $empleado = Empleado::findOrFail($id);
-        $notificador = new SMSNotificadorService();
+        $notificador = new SMSNotificadorService(); //WhatsAppNotificadorService();
         $mensaje = $notificador->enviar($empleado->nombre);
 
         echo $mensaje;
+    }
+
+
+    public function reporteXml()
+    {
+        $empleados = Empleado::all()->map(function ($empleado) {
+            $calculadora = SalarioFactory::obtenerCalculadora($empleado);
+            return [
+                'nombre' => $empleado->nombre,
+                'tipo' => $empleado->tipo,
+                'salario_base' => $empleado->salario_base,
+                'salario_final' => $calculadora->calcular($empleado->salario_base),
+            ];
+        })->toArray();
+
+        $xmlService = new XMLReporteService();
+        return $xmlService->generar($empleados);
     }
 }
