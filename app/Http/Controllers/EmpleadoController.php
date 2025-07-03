@@ -11,8 +11,8 @@ use App\Services\Notificaciones\SMSNotificador;
 use App\Services\Notificaciones\WhatsAppNotificador;
 use App\Services\Reportes\ExcelReporte;
 use App\Services\Reportes\JSONReporte;
-use App\Services\Reportes\PDFReporteService;
-use App\Services\Reportes\XMLReporteService;
+use App\Services\Reportes\PDFReporte;
+use App\Services\Reportes\XMLReporte;
 use App\Services\Salarios\SalarioFactory;
 
 use Illuminate\Http\Request;
@@ -70,7 +70,7 @@ class EmpleadoController extends Controller
             ];
         })->toArray();
         // CREA instancia del servicio para PDF
-        $pdfService = new PDFReporteService();
+        $pdfService = new PDFReporte();
         // GENERA el PDF
         return $pdfService->generar($empleados);
     }
@@ -125,7 +125,7 @@ class EmpleadoController extends Controller
             ];
         })->toArray();
 
-        $xmlService = new XMLReporteService();
+        $xmlService = new XMLReporte();
         return $xmlService->generar($empleados);
     }
 }

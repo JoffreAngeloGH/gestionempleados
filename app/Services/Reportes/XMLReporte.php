@@ -4,7 +4,7 @@ namespace App\Services\Reportes;
 
 use App\Services\Reportes\ReporteInterface;
 
-class XMLReporteService implements ReporteInterface
+class XMLReporte implements ReporteInterface
 {
     public function generar(array $empleados)
     {

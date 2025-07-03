@@ -6,7 +6,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Empleado;
 
 // Clase que genera el reporte en PDF
-class PDFReporteService implements ReporteInterface
+class PDFReporte implements ReporteInterface
 {
     public function generar(array $empleados)
     {
