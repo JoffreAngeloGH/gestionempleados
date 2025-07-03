@@ -6,7 +6,7 @@ use App\Services\Reportes\ReporteInterface;
 use Illuminate\Support\Facades\Storage; 
 
 // Clase que genera el reporte en JSON
-class JSONReporteService implements ReporteInterface
+class JSONReporte implements ReporteInterface
 {
     public function generar(array $empleados)
     {

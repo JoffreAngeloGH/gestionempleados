@@ -9,8 +9,8 @@ use App\Models\Empleado;
 use App\Services\Notificaciones\EmailNotificador;
 use App\Services\Notificaciones\SMSNotificador;
 use App\Services\Notificaciones\WhatsAppNotificador;
-use App\Services\Reportes\ExcelReporteService;
-use App\Services\Reportes\JSONReporteService;
+use App\Services\Reportes\ExcelReporte;
+use App\Services\Reportes\JSONReporte;
 use App\Services\Reportes\PDFReporteService;
 use App\Services\Reportes\XMLReporteService;
 use App\Services\Salarios\SalarioFactory;
@@ -49,7 +49,7 @@ class EmpleadoController extends Controller
         })->toArray();
 
         // CREA instancia del servicio para JSON
-        $reporte = new JSONReporteService();
+        $reporte = new JSONReporte();
         // GENERA el archivo (o string) del reporte
         $mensaje = $reporte->generar($empleados);
         // DEVUELVE respuesta JSON al cliente
@@ -87,7 +87,7 @@ class EmpleadoController extends Controller
             ];
         })->toArray();
 
-        $excelService = new ExcelReporteService();
+        $excelService = new ExcelReporte();
         return $excelService->generar($empleados);
     }
 
